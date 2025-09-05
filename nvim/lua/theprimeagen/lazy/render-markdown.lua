@@ -10,7 +10,7 @@ return {
 
     checkbox = {
       enabled = true,
-      position = "inline",
+      position = "overlay",
       unchecked = {
         -- CORREÇÃO: Remova o espaço depois do ícone
         icon = "󰄱",

@@ -127,7 +127,7 @@ return {
     -- ⚠️ ATENÇÃO: Para os ícones funcionarem, você precisa de uma "Nerd Font" instalada.
     -- Se os ícones aparecerem como quadrados estranhos, use a configuração alternativa comentada abaixo.
     ui = {
-      enable = true,
+      enable = false,
       update_debounce = 200,
       checkboxes = {
         [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
