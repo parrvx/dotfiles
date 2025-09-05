@@ -1,5 +1,4 @@
--- ~/github/dotfiles-latest/neovim/neobean/lua/plugins/image-viewer.lua
-
+-- CORREÇÃO: O comentário que apontava para um caminho de arquivo antigo e incorreto foi removido.
 return {
   "3rd/image.nvim",
   opts = {
@@ -13,3 +12,4 @@ return {
 --     Coloque o cursor sobre o link da imagem, como ![[minha-imagem.jpg]].
 --
 --     Execute o comando :ImageOpen. Uma janela flutuante com a imagem aparecerá.
+

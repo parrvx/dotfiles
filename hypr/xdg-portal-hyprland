@@ -1,8 +1,14 @@
 #!/bin/bash
+
+# CORREÇÃO: O script agora usa 'killall -q' para terminar os processos de forma silenciosa,
+# o que significa que ele não exibirá um erro se o processo não estiver em execução.
+# Isso torna a inicialização do sistema mais limpa.
 sleep 1
-killall xdg-desktop-portal-hyprland
-killall xdg-desktop-portal-wlr
-killall xdg-desktop-portal
+killall -q xdg-desktop-portal-hyprland
+killall -q xdg-desktop-portal-wlr
+killall -q xdg-desktop-portal
+
+# Inicia os portais necessários na ordem correta
 /usr/lib/xdg-desktop-portal-hyprland &
 sleep 2
 /usr/lib/xdg-desktop-portal &

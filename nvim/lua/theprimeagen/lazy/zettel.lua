@@ -44,16 +44,18 @@ return {
     "hrsh7th/nvim-cmp",         -- Para autocompletar
   },
 
-  -- ⭐️ OPÇÕES PRINCIPAIS DO PLUGIN
+     -- ⭐️ OPÇÕES PRINCIPAIS DO PLUGIN
   opts = {
     -- ✅ CONFIGURAÇÃO DO SEU VAULT (WORKSPACE)
     -- Esta é a configuração mais importante.
     workspaces = {
       {
         name = "pessoal",
-        -- Usamos vim.fn.expand("~") para garantir que o caminho absoluto seja usado,
-        -- o que resolve o nosso problema anterior de forma definitiva.
-        path = vim.fn.expand("~") .. "/github/vault",
+        -- CORREÇÃO: O caminho para o vault agora é lido a partir de uma variável de ambiente chamada 'OBSIDIAN_VAULT'.
+        -- Isso torna a configuração portátil e fácil de gerenciar em diferentes máquinas.
+        -- Para configurar, adicione 'export OBSIDIAN_VAULT="/caminho/para/seu/vault"' ao seu .bashrc ou .zshrc.
+        -- Como fallback, ele ainda usa o caminho antigo se a variável não estiver definida.
+        path = vim.fn.expand(os.getenv("OBSIDIAN_VAULT") or "~/github/vault"),
       },
     },
 
