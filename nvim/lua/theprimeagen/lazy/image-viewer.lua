@@ -1,15 +1,23 @@
--- CORREÇÃO: O comentário que apontava para um caminho de arquivo antigo e incorreto foi removido.
+return {
+  "edluffy/hologram.nvim",
+  -- Carrega o plugin quando necessário para manter a inicialização rápida
+  event = "VeryLazy",
+  config = function()
+    require('hologram').setup({
+      -- A detecção automática geralmente funciona bem,
+      -- especialmente com o Kitty.
+      auto_display = true,
+    })
+  end,
+}
+
+--[[
+-- CONFIGURAÇÃO ANTIGA (agora desativada)
+
 return {
   "3rd/image.nvim",
   opts = {
-    -- Configuração padrão geralmente funciona bem
-    backend = "kitty", -- ou 'ueberzug', 'kitty', 'chafa', etc., dependendo do seu terminal
+    backend = "kitty",
   },
 }
-
--- Como usar:
---
---     Coloque o cursor sobre o link da imagem, como ![[minha-imagem.jpg]].
---
---     Execute o comando :ImageOpen. Uma janela flutuante com a imagem aparecerá.
-
+--]]

@@ -1,0 +1,25 @@
+# ~/.config/yazi/yazi.toml
+
+[opener]
+# 1. Regra para arquivos PDF (a que já tínhamos feito)
+pdf = [
+    { run = "zathura '$@'", block = true, desc = "Abrir com Zathura" },
+]
+
+# 2. Regra para arquivos de atalho de internet (.url)
+url = [
+    { run = "firefox \"$(grep -oP '^URL=\\K.*' '$@')\"", block = false, desc = "Abrir URL no Firefox" },
+]
+
+# 3. Regra para arquivos de texto em geral
+# Esta regra se aplica a qualquer arquivo que o Yazi identifique como texto.
+# Isso inclui .txt, .md, .sh, .conf, .toml, .lua, e muitos outros.
+text = [
+    { run = "kitty nvim '$@'", block = true, desc = "Editar com Neovim" },
+]
+
+# Se você quiser adicionar regras para outros tipos de arquivo, pode fazer aqui.
+# Exemplo para vídeos:
+# video = [
+#   { run = "mpv '$@'", block = true },
+# ]
