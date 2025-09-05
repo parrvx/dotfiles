@@ -7,18 +7,22 @@ return {
     bullet = {
       enabled = true,
     },
+
     checkbox = {
       enabled = true,
       position = "inline",
       unchecked = {
-        icon = "󰄱 ", -- Removi os espaços extras, o alinhamento é melhor com 'inline'
+        -- CORREÇÃO: Remova o espaço depois do ícone
+        icon = "󰄱",
         highlight = "RenderMarkdownUnchecked",
       },
       checked = {
-        icon = "󰱒 ",
+        -- CORREÇÃO: Remova o espaço depois do ícone
+        icon = "󰱒",
         highlight = "RenderMarkdownChecked",
       },
     },
+
     html = {
       enabled = true,
       comment = { conceal = false },
