@@ -26,7 +26,13 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
-vim.opt.updatetime = 50
-
 vim.opt.colorcolumn = "80"
 vim.opt.conceallevel = 2
+-- Localize a linha 'vim.opt.updatetime = 50' e altere-a.
+
+-- ⭐ OTIMIZAÇÃO:
+-- O valor original (50ms) é muito agressivo e faz com que eventos
+-- como 'CursorHold' disparem constantemente. Aumentar este valor
+-- para 300ms é um padrão mais seguro e eficiente, reduzindo a
+-- carga na CPU sem prejudicar a funcionalidade da maioria dos plugins.
+vim.opt.updatetime = 300

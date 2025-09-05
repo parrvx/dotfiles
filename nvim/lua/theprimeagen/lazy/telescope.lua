@@ -1,5 +1,12 @@
+-- Substitua o conteúdo do seu arquivo por este:
+
 return {
     "nvim-telescope/telescope.nvim",
+
+    -- ⭐ AJUSTE: A propriedade 'cmd' foi removida.
+    -- Ao remover a instrução de carregamento preguiçoso, garantimos
+    -- que o lazy.nvim carregará o Telescope durante a inicialização.
+    -- Desta forma, ele estará sempre disponível para uso imediato.
 
     tag = "0.1.5",
 
@@ -28,4 +35,3 @@ return {
         vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
     end
 }
-

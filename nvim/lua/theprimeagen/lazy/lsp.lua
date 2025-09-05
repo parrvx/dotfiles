@@ -1,5 +1,14 @@
+-- Substitua o conteúdo do seu arquivo por este:
+
 return {
   "neovim/nvim-lspconfig",
+
+  -- ⭐ OTIMIZAÇÃO:
+  -- Adiciona o evento "BufReadPre". Isso garante que o lspconfig e suas
+  -- dependências só serão carregados quando você abrir um arquivo,
+  -- o que acelera drasticamente a inicialização do Neovim.
+  event = "BufReadPre",
+
   dependencies = {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
@@ -14,6 +23,7 @@ return {
   },
 
   config = function()
+    -- (O restante do seu arquivo de configuração permanece o mesmo)
     local cmp = require('cmp')
     local cmp_lsp = require("cmp_nvim_lsp")
     local capabilities = vim.tbl_deep_extend(
@@ -28,7 +38,7 @@ return {
       ensure_installed = {
         "lua_ls",
         "rust_analyzer",
-        "marksman", -- <--- ADICIONADO PARA O ZETTELKASTEN
+        "marksman",
       },
       handlers = {
         function(server_name) -- default handler (optional)
@@ -58,7 +68,7 @@ return {
     cmp.setup({
       snippet = {
         expand = function(args)
-          require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+          require('luasnip').lsp_expand(args.body)
         end,
       },
       mapping = cmp.mapping.preset.insert({
@@ -69,14 +79,13 @@ return {
       }),
       sources = cmp.config.sources({
         { name = 'nvim_lsp' },
-        { name = 'luasnip' }, -- For luasnip users.
+        { name = 'luasnip' },
       }, {
         { name = 'buffer' },
       })
     })
 
     vim.diagnostic.config({
-      -- update_in_insert = true,
       float = {
         focusable = false,
         style = "minimal",

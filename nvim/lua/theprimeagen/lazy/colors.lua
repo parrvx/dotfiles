@@ -1,48 +1,43 @@
-function ColorMyPencils(color)
-	color = color or "rose-pine"
-	vim.cmd.colorscheme(color)
-
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-
-end
+-- Substitua o conteúdo do arquivo por este:
 
 return {
-    {
-        "folke/tokyonight.nvim",
-        config = function()
-            require("tokyonight").setup({
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                style = "storm", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-                transparent = true, -- Enable this to disable setting the background color
-                terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
-                styles = {
-                    -- Style to be applied to different syntax groups
-                    -- Value is any valid attr-list value for `:help nvim_set_hl`
-                    comments = { italic = false },
-                    keywords = { italic = false },
-                    -- Background styles. Can be "dark", "transparent" or "normal"
-                    sidebars = "dark", -- style for sidebars, see below
-                    floats = "dark", -- style for floating windows
-                },
-            })
-        end
-    },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000, -- Garante que o tema seja carregado antes de outros plugins
+    config = function()
+      require("catppuccin").setup({
+        -- O "flavour" (sabor) do tema.
+        -- 'mocha' é o que você já usa no seu terminal Kitty.
+        flavour = "mocha",
 
-    {
-        "rose-pine/neovim",
-        name = "rose-pine",
-        config = function()
-            require('rose-pine').setup({
-                disable_background = true,
-            })
+        -- ⭐ IMPORTANTE:
+        -- Suas configurações anteriores indicavam uma preferência por fundo transparente.
+        -- Esta opção replica esse comportamento, integrando o Neovim com o fundo
+        -- semi-transparente do seu terminal Kitty. Mude para 'false' se preferir um fundo sólido.
+        transparent_background = true,
 
-            vim.cmd("colorscheme rose-pine")
+        -- Estilos adicionais para melhor legibilidade
+        styles = {
+          comments = { "italic" },
+          keywords = { "italic" },
+        },
 
-            ColorMyPencils()
-        end
-    },
+        -- Integração com outros plugins que você usa ou pode vir a usar
+        integrations = {
+          treesitter = true,
+          native_lsp = {
+            enabled = true,
+          },
+          telescope = true,
+          mason = true,
+          cmp = true,
+          -- Adicione outras integrações aqui conforme necessário
+        },
+      })
 
-
+      -- Define o Catppuccin como o esquema de cores padrão
+      vim.cmd.colorscheme("catppuccin")
+    end,
+  },
 }
