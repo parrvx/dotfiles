@@ -1,3 +1,4 @@
+--[[
 return {
   "edluffy/hologram.nvim",
   -- Carrega o plugin quando necessário para manter a inicialização rápida
@@ -10,9 +11,9 @@ return {
     })
   end,
 }
+--]]
 
---[[
--- CONFIGURAÇÃO ANTIGA (agora desativada)
+-- CONFIGURAÇÃO ANTIGA
 
 return {
   "3rd/image.nvim",
@@ -20,4 +21,3 @@ return {
     backend = "kitty",
   },
 }
---]]
