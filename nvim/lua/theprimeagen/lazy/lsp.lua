@@ -3,6 +3,7 @@
 return {
   "neovim/nvim-lspconfig",
 
+   enabled = false, -- ADICIONE ESTA LINHA PARA DESATIVAR TODO O BLOCO
   -- ⭐ OTIMIZAÇÃO:
   -- Adiciona o evento "BufReadPre". Isso garante que o lspconfig e suas
   -- dependências só serão carregados quando você abrir um arquivo,
