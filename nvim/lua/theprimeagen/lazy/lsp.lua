@@ -3,7 +3,7 @@
 return {
   "neovim/nvim-lspconfig",
 
-   enabled = false, -- ADICIONE ESTA LINHA PARA DESATIVAR TODO O BLOCO
+  -- enabled = false, -- ADICIONE ESTA LINHA PARA DESATIVAR TODO O BLOCO
   -- ⭐ OTIMIZAÇÃO:
   -- Adiciona o evento "BufReadPre". Isso garante que o lspconfig e suas
   -- dependências só serão carregados quando você abrir um arquivo,
@@ -37,9 +37,10 @@ return {
     require("mason").setup()
     require("mason-lspconfig").setup({
       ensure_installed = {
-        "lua_ls",
-        "rust_analyzer",
-        "marksman",
+         "lua_ls",
+		 "marksman",      -- Ótimo para Markdown
+		 "pyright",       -- Adicione para Python
+		 "sqlls",         -- Adicione para SQL
       },
       handlers = {
         function(server_name) -- default handler (optional)

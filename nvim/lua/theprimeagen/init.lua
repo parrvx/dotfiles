@@ -67,3 +67,20 @@ autocmd('LspAttach', {
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
+--
+-- Adicione isso no final do seu arquivo de inicialização do Neovim
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
+
+-- Grupo de autocmd para formatação
+local format_group = augroup('FormatAutogroup', { clear = true })
+
+-- Formatar ao salvar para arquivos Python
+autocmd('BufWritePre', {
+  group = format_group,
+  pattern = '*.py',
+  callback = function()
+    vim.cmd('silent !ruff format %')
+    vim.cmd('redraw!')
+  end,
+})

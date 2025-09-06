@@ -2,6 +2,8 @@
 
 # Adiciona o diretório de binários do usuário ao PATH
 export PATH=$HOME/.local/bin:$PATH
+export PATH=~/.npm-global/bin:$PATH
+export OBSIDIAN_VAULT="~/github/vault"
 
 # Histórico de Comandos
 HISTFILE=~/.histfile
