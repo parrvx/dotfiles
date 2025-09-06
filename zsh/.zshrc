@@ -22,6 +22,25 @@ eval "$(starship init zsh)"
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+# --- Integração do Yazi para 'cd' ao sair ---
+# Esta função substitui o comando 'yazi' padrão.
+function yazi() {
+    # Cria um arquivo temporário para armazenar o último diretório
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+
+    # Executa o yazi, passando o caminho do arquivo temporário como argumento
+    # O Yazi irá escrever o último diretório visitado neste arquivo ao sair.
+    command yazi --cwd-file="$tmp" "$@"
+
+    # Se o arquivo temporário foi criado e contém informação...
+    if [ -f "$tmp" ]; then
+        # ...lê o diretório do arquivo e navega até ele com 'cd'.
+        cd "$(cat "$tmp")"
+        # Remove o arquivo temporário para não deixar lixo no sistema.
+        rm -f "$tmp"
+    fi
+}
+
 # Aliases
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'

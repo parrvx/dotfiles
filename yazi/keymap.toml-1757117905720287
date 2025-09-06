@@ -1,0 +1,8 @@
+# ~/.config/yazi/keymap.toml
+
+[[manager.prepend_keymap]]
+on   = [ "l", "g" ]
+run  = "shell"
+args = [ "lazygit" ]
+block = true
+desc = "Abrir Lazygit neste diretório"
