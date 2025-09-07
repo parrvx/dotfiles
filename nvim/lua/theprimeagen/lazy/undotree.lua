@@ -1,11 +1,14 @@
--- Substitua o conteúdo do seu arquivo por este:
-
 return {
     "mbbill/undotree",
-    -- ⭐ OTIMIZAÇÃO:
-    -- Carrega o plugin ao executar o comando :UndotreeToggle.
-    cmd = "UndotreeToggle",
-    config = function()
-        vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
-    end
+    -- O plugin agora será carregado quando esta tecla for pressionada
+    keys = {
+        {
+            "<leader>u",
+            function()
+                vim.cmd.UndotreeToggle()
+            end,
+            desc = "Toggle Undotree"
+        }
+    },
+    -- A opção 'cmd' não é mais necessária aqui
 }

@@ -36,3 +36,7 @@ vim.opt.conceallevel = 2
 -- para 300ms é um padrão mais seguro e eficiente, reduzindo a
 -- carga na CPU sem prejudicar a funcionalidade da maioria dos plugins.
 vim.opt.updatetime = 300
+
+-- Desativa provedores não utilizados para limpar o :checkhealth
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
